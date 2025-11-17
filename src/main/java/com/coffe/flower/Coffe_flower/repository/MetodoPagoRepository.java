@@ -1,9 +1,9 @@
 package com.coffe.flower.Coffe_flower.repository;
 
-import com.coffe.flower.Coffe_flower.model.Estado;
+import com.coffe.flower.Coffe_flower.model.MetodoPago;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EstadoRepository extends JpaRepository<Estado, Long> {
+public interface MetodoPagoRepository extends JpaRepository<MetodoPago, Long> {
 }

@@ -1,5 +1,5 @@
 package com.coffe.flower.Coffe_flower.repository;
 
-public class ProductoVentaRepository {
+public interface Endulzante {
 
 }

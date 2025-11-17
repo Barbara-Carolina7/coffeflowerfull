@@ -3,19 +3,18 @@ package com.coffe.flower.Coffe_flower.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "estados")
-public class Estado {
+@Table(name = "metodos_pago")
+public class MetodoPago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre; // comprado, vendido, entregado, etc.
+    private String nombre; // Ej: Tarjeta, Efectivo, Transferencia, Paypal, etc.
 
-    public Estado() {
-    }
+    public MetodoPago() {}
 
-    public Estado(String nombre) {
+    public MetodoPago(String nombre) {
         this.nombre = nombre;
     }
 
