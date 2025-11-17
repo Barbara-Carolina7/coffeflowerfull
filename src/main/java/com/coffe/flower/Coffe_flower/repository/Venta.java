@@ -1,5 +1,0 @@
-package com.coffe.flower.Coffe_flower.repository;
-
-public interface Venta {
-
-}
