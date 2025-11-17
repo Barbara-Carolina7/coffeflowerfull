@@ -4,23 +4,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tipos")
-public class Tipo {
+public class Temperatura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
+    private String tipo; // Caliente, Frío, Tibio
 
-    public Tipo() {}
-
-    public Tipo(String nombre) {
-        this.nombre = nombre;
-    }
+    public Temperatura() {}
 
     public Long getId() {
         return id;
@@ -30,12 +24,12 @@ public class Tipo {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
 
