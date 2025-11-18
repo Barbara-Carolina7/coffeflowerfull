@@ -33,7 +33,7 @@ public class ProductoService {
         return productoRepository.findById(id).map(producto -> {
             producto.setNombre(datos.getNombre());
             producto.setDescripcion(datos.getDescripcion());
-            producto.setPrecio(datos.getPrecio());
+            producto.setPrecioBase(datos.getPrecioBase());
             producto.setStock(datos.getStock());
             return productoRepository.save(producto);
         });

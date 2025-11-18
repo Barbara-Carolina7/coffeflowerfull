@@ -4,41 +4,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "tamanos")
 public class Tamano {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre; // Pequeño, Mediano, Grande
-    private Integer mililitros; // 250, 350, 500 ml
+    private String nombre;       // pequeño, mediano, grande
+    private Double precioExtra;  // valor adicional según tamaño
 
     public Tamano() {}
 
-    public Long getId() {
-        return id;
-    }
+    // Getters y Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getMililitros() {
-        return mililitros;
-    }
-
-    public void setMililitros(Integer mililitros) {
-        this.mililitros = mililitros;
-    }
+    public Double getPrecioExtra() { return precioExtra; }
+    public void setPrecioExtra(Double precioExtra) { this.precioExtra = precioExtra; }
 }
-

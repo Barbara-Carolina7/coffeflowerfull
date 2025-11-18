@@ -14,37 +14,18 @@ public class Extra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;   // Ej: Canela, Menta, Chocolate, Crema Chantilly
-    private Integer precio;  // Opcional: costo extra del ingrediente
+    private String nombre;
+    private Double precioExtra; // <-- obligatorio
 
     public Extra() {}
 
-    public Extra(String nombre, Integer precio) {
-        this.nombre = nombre;
-        this.precio = precio;
-    }
+    // Getters y Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(Integer precio) {
-        this.precio = precio;
-    }
+    public Double getPrecioExtra() { return precioExtra; } // <-- obligatorio
+    public void setPrecioExtra(Double precioExtra) { this.precioExtra = precioExtra; } // <-- obligatorio
 }
