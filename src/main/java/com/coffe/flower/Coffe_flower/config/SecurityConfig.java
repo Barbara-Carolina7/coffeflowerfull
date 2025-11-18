@@ -20,8 +20,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // Deshabilitado para API REST
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/**").permitAll() // endpoints públicos
-                .anyRequest().authenticated()
+                .requestMatchers("/**").permitAll() // Todas las rutas públicas
             );
         return http.build();
     }
