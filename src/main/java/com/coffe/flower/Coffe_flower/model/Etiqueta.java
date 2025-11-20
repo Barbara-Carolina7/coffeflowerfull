@@ -1,10 +1,10 @@
 package com.coffe.flower.Coffe_flower.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "etiquetas")
@@ -16,14 +16,12 @@ public class Etiqueta {
 
     private String nombre;
 
-    public Etiqueta() {
-    }
+    public Etiqueta() {}
 
     public Etiqueta(String nombre) {
         this.nombre = nombre;
     }
 
-    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -40,4 +38,3 @@ public class Etiqueta {
         this.nombre = nombre;
     }
 }
-

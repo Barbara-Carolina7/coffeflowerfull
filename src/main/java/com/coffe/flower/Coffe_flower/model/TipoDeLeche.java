@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 
 @Entity
 @Table(name = "tipos_leche")
@@ -14,6 +15,7 @@ public class TipoDeLeche {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nombre; // Ej: Entera, Descremada, Almendra, Avena, Soya, etc.
 
     public TipoDeLeche() {}
@@ -36,5 +38,10 @@ public class TipoDeLeche {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "TipoDeLeche{id=" + id + ", nombre='" + nombre + "'}";
     }
 }

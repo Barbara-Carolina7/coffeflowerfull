@@ -4,7 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "roles")
@@ -16,11 +19,17 @@ public class Rol {
 
     private String nombre;
 
+    // Relación inversa: un rol puede tener varios usuarios
+    @OneToMany(mappedBy = "rol")
+    private List<Usuario> usuarios;
+
     public Rol() {}
 
     public Rol(String nombre) {
         this.nombre = nombre;
     }
+
+    // GETTERS & SETTERS
 
     public Long getId() {
         return id;
@@ -36,5 +45,13 @@ public class Rol {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }

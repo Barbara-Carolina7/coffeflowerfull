@@ -1,6 +1,15 @@
 package com.coffe.flower.Coffe_flower.model;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "categorias")
@@ -14,17 +23,17 @@ public class Categoria {
 
     private String descripcion;
 
-    // Constructor vacío
-    public Categoria() {
-    }
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Producto> productos;
 
-    // Constructor con campos
+    public Categoria() {}
+
     public Categoria(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
-    // Getter y Setter ID
     public Long getId() {
         return id;
     }
@@ -33,7 +42,6 @@ public class Categoria {
         this.id = id;
     }
 
-    // Getter y Setter Nombre
     public String getNombre() {
         return nombre;
     }
@@ -42,7 +50,6 @@ public class Categoria {
         this.nombre = nombre;
     }
 
-    // Getter y Setter Descripcion
     public String getDescripcion() {
         return descripcion;
     }
@@ -50,5 +57,12 @@ public class Categoria {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
 }
- 

@@ -1,6 +1,10 @@
 package com.coffe.flower.Coffe_flower.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "estados")
@@ -10,15 +14,17 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre; // comprado, vendido, entregado, etc.
+    private String nombre; // Ej: Pendiente, Preparado, Entregado
 
-    public Estado() {
-    }
+    // Constructor vacío
+    public Estado() {}
 
+    // Constructor con parámetros
     public Estado(String nombre) {
         this.nombre = nombre;
     }
 
+    // Getters y Setters
     public Long getId() {
         return id;
     }

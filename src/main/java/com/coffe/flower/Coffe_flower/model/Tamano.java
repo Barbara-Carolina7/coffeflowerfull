@@ -1,10 +1,10 @@
 package com.coffe.flower.Coffe_flower.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tamanos")
@@ -20,12 +20,27 @@ public class Tamano {
     public Tamano() {}
 
     // Getters y Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Double getPrecioExtra() { return precioExtra; }
-    public void setPrecioExtra(Double precioExtra) { this.precioExtra = precioExtra; }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Double getPrecioExtra() {
+        return precioExtra;
+    }
+
+    public void setPrecioExtra(Double precioExtra) {
+        this.precioExtra = precioExtra;
+    }
 }

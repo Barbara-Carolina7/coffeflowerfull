@@ -14,8 +14,8 @@ public class Endulzante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre; // Ej: Azúcar, Sucralosa, Stevia, Miel
-    private Integer nivel; // Opcional: intensidad (1,2,3) o cantidad
+    private String nombre;  
+    private Integer nivel;  
 
     public Endulzante() {}
 

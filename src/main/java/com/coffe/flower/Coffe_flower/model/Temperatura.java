@@ -1,11 +1,13 @@
 package com.coffe.flower.Coffe_flower.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
+@Table(name = "temperaturas")
 public class Temperatura {
 
     @Id
@@ -32,4 +34,3 @@ public class Temperatura {
         this.tipo = tipo;
     }
 }
-
