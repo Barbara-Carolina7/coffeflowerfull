@@ -1,0 +1,40 @@
+# ----------------------------------------------------
+# 1. ETAPA DE CONSTRUCCIÓN (BUILD STAGE)
+# Utiliza la imagen de Maven con Java 21 para compilar tu proyecto.
+# ----------------------------------------------------
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia los archivos de Maven para descargar dependencias
+COPY pom.xml .
+
+# Descarga las dependencias (optimiza el caché de Docker)
+RUN mvn dependency:go-offline
+
+# Copia el código fuente restante
+COPY src ./src
+
+# Compila y empaqueta la aplicación en un JAR ejecutable
+# El resultado será target/naves-0.0.1-SNAPSHOT.jar
+RUN mvn clean package -DskipTests
+
+
+# ----------------------------------------------------
+# 2. ETAPA DE EJECUCIÓN (RUNTIME STAGE)
+# Utiliza solo el Java Runtime Environment (JRE) para la ejecución.
+# ----------------------------------------------------
+FROM eclipse-temurin:21-jre-alpine
+
+# Establece el directorio de trabajo final
+WORKDIR /app
+
+# Copia el JAR ejecutable de la etapa de construcción anterior
+COPY --from=builder /app/target/naves-0.0.1-SNAPSHOT.jar app.jar
+
+# Expone el puerto por defecto de Spring Boot
+EXPOSE 8080
+
+# Comando para ejecutar la aplicación JAR
+ENTRYPOINT ["java", "-jar", "app.jar"]
