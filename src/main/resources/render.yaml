@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: coffee-flower-backend
+    env: java
+    plan: free
+    branch: main
+    buildCommand: "./mvnw clean package -DskipTests"
+    startCommand: "java -jar target/*.jar"
+    runtime: "java21"
