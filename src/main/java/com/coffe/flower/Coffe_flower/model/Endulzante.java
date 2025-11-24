@@ -5,9 +5,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "endulzantes")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Endulzante {
 
     @Id
@@ -16,35 +24,4 @@ public class Endulzante {
 
     private String nombre;  
     private Integer nivel;  
-
-    public Endulzante() {}
-
-    public Endulzante(String nombre, Integer nivel) {
-        this.nombre = nombre;
-        this.nivel = nivel;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(Integer nivel) {
-        this.nivel = nivel;
-    }
 }

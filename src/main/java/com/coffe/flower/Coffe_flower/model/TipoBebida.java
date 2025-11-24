@@ -5,9 +5,17 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "tipos_bebida")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TipoBebida {
 
     @Id
@@ -15,26 +23,4 @@ public class TipoBebida {
     private Long id;
 
     private String nombre; // Latte, Capuccino, Americano, Espresso, etc.
-
-    public TipoBebida() {}
-
-    public TipoBebida(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 }

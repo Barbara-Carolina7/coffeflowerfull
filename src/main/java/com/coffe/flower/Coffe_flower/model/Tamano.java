@@ -5,9 +5,17 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "tamanos")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tamano {
 
     @Id
@@ -16,31 +24,4 @@ public class Tamano {
 
     private String nombre;       // pequeño, mediano, grande
     private Double precioExtra;  // valor adicional según tamaño
-
-    public Tamano() {}
-
-    // Getters y Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Double getPrecioExtra() {
-        return precioExtra;
-    }
-
-    public void setPrecioExtra(Double precioExtra) {
-        this.precioExtra = precioExtra;
-    }
 }

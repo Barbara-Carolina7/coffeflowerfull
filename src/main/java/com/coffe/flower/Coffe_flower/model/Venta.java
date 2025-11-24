@@ -1,6 +1,13 @@
 package com.coffe.flower.Coffe_flower.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,65 +33,11 @@ public class Venta {
     @JoinColumn(name = "metodo_pago_id")
     private MetodoPago metodoPago;
 
-    private Double total;
+    private Double total; // Total de la compra
 
-    private LocalDateTime fecha = LocalDateTime.now();
+    private LocalDateTime fecha; // Fecha de la venta
 
+    // Constructor vacío
     public Venta() {}
 
-    public Venta(Usuario usuario, Estado estado, MetodoPago metodoPago, Double total) {
-        this.usuario = usuario;
-        this.estado = estado;
-        this.metodoPago = metodoPago;
-        this.total = total;
-        this.fecha = LocalDateTime.now();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public MetodoPago getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(MetodoPago metodoPago) {
-        this.metodoPago = metodoPago;
-    }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
-}
+    // Constructor con

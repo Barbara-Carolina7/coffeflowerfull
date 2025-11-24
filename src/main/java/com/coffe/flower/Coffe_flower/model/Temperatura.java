@@ -5,9 +5,17 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "temperaturas")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Temperatura {
 
     @Id
@@ -15,22 +23,4 @@ public class Temperatura {
     private Long id;
 
     private String tipo; // Caliente, Frío, Tibio
-
-    public Temperatura() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 }

@@ -5,9 +5,15 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "toppings")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Topping {
 
     @Id
@@ -17,30 +23,4 @@ public class Topping {
     private String nombre;
 
     private Double precioExtra;
-
-    public Topping() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Double getPrecioExtra() {
-        return precioExtra;
-    }
-
-    public void setPrecioExtra(Double precioExtra) {
-        this.precioExtra = precioExtra;
-    }
 }

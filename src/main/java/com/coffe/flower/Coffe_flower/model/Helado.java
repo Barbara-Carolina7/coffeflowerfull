@@ -5,9 +5,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "helados")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Helado {
 
     @Id
@@ -16,36 +24,4 @@ public class Helado {
 
     private String sabor;   // Ej: Chocolate, Vainilla, Oreo, Frutilla
     private Integer precio; // Costo extra si aplica para el milkshake
-
-    public Helado() {}
-
-    public Helado(String sabor, Integer precio) {
-        this.sabor = sabor;
-        this.precio = precio;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSabor() {
-        return sabor;
-    }
-
-    public void setSabor(String sabor) {
-        this.sabor = sabor;
-    }
-
-    public Integer getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(Integer precio) {
-        this.precio = precio;
-    }
 }
-

@@ -5,9 +5,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "etiquetas")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Etiqueta {
 
     @Id
@@ -15,26 +23,4 @@ public class Etiqueta {
     private Long id;
 
     private String nombre;
-
-    public Etiqueta() {}
-
-    public Etiqueta(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 }
