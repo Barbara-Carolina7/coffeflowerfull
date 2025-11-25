@@ -5,7 +5,6 @@ import com.coffe.flower.Coffe_flower.repository.RolRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RolService {
@@ -16,27 +15,31 @@ public class RolService {
         this.rolRepository = rolRepository;
     }
 
-    public List<Rol> listar() {
+    // Obtener todos
+    public List<Rol> getAllRoles() {
         return rolRepository.findAll();
     }
 
-    public Optional<Rol> obtenerPorId(Long id) {
-        return rolRepository.findById(id);
+    // Obtener por ID
+    public Rol getRolById(Long id) {
+        return rolRepository.findById(id).orElse(null);
     }
 
-    public Rol guardar(Rol rol) {
+    // Crear
+    public Rol createRol(Rol rol) {
         return rolRepository.save(rol);
     }
 
-    public Optional<Rol> actualizar(Long id, Rol datos) {
+    // Actualizar
+    public Rol updateRol(Long id, Rol datos) {
         return rolRepository.findById(id).map(rol -> {
             rol.setNombre(datos.getNombre());
             return rolRepository.save(rol);
-        });
+        }).orElse(null);
     }
 
-    public void eliminar(Long id) {
+    // Eliminar
+    public void deleteRol(Long id) {
         rolRepository.deleteById(id);
     }
 }
-

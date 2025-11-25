@@ -10,7 +10,7 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data  // Lombok genera getters, setters, toString(), equals() y hashCode() automáticamente
+@Data
 @Entity
 @Table(name = "roles")
 public class Rol {
@@ -21,9 +21,8 @@ public class Rol {
 
     private String nombre;
 
-    // Relación inversa: un rol puede tener varios usuarios
+    // Un rol puede tener muchos usuarios
     @OneToMany(mappedBy = "rol")
     private List<Usuario> usuarios;
 
-    // Lombok ya genera el constructor vacío y los getters/setters, así que no es necesario escribirlos manualmente
 }

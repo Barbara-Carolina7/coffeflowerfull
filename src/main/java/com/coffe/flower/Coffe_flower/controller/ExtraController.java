@@ -2,13 +2,14 @@ package com.coffe.flower.Coffe_flower.controller;
 
 import com.coffe.flower.Coffe_flower.model.Extra;
 import com.coffe.flower.Coffe_flower.service.ExtraService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/extras")
+@RequestMapping("/api/extras")
 public class ExtraController {
 
     private final ExtraService extraService;
@@ -19,32 +20,35 @@ public class ExtraController {
 
     @GetMapping
     public List<Extra> listar() {
-        return extraService.listar();
+        return extraService.getAll();  // ← corregido
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Extra> obtener(@PathVariable Long id) {
-        return extraService.obtenerPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Extra extra = extraService.getById(id);  // ← corregido
+        if (extra == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(extra);
     }
 
     @PostMapping
     public Extra guardar(@RequestBody Extra extra) {
-        return extraService.guardar(extra);
+        return extraService.save(extra); // ← corregido
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Extra> actualizar(@PathVariable Long id, @RequestBody Extra datos) {
-        return extraService.actualizar(id, datos)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Extra actualizado = extraService.update(id, datos); // ← corregido
+        if (actualizado == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(actualizado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        extraService.eliminar(id);
+        extraService.delete(id); // ← corregido
         return ResponseEntity.noContent().build();
     }
 }
-

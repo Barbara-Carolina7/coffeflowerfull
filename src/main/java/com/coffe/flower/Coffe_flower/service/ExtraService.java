@@ -2,6 +2,7 @@ package com.coffe.flower.Coffe_flower.service;
 
 import com.coffe.flower.Coffe_flower.model.Extra;
 import com.coffe.flower.Coffe_flower.repository.ExtraRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,34 +11,36 @@ import java.util.Optional;
 @Service
 public class ExtraService {
 
-    private final ExtraRepository extraRepository;
+    @Autowired
+    private ExtraRepository extraRepository;
 
-    public ExtraService(ExtraRepository extraRepository) {
-        this.extraRepository = extraRepository;
-    }
-
-    public List<Extra> listar() {
+    public List<Extra> getAll() {
         return extraRepository.findAll();
     }
 
-    public Optional<Extra> obtenerPorId(Long id) {
-        return extraRepository.findById(id);
+    public Extra getById(Long id) {
+        Optional<Extra> optionalExtra = extraRepository.findById(id);
+        return optionalExtra.orElse(null);
     }
 
-    public Extra guardar(Extra extra) {
+    public Extra save(Extra extra) {
         return extraRepository.save(extra);
     }
 
-    public Optional<Extra> actualizar(Long id, Extra datos) {
-        return extraRepository.findById(id).map(extra -> {
+    public Extra update(Long id, Extra datos) {
+        Optional<Extra> optionalExtra = extraRepository.findById(id);
+
+        if (optionalExtra.isPresent()) {
+            Extra extra = optionalExtra.get();
             extra.setNombre(datos.getNombre());
             extra.setPrecio(datos.getPrecio());
             return extraRepository.save(extra);
-        });
+        }
+
+        return null;
     }
 
-    public void eliminar(Long id) {
+    public void delete(Long id) {
         extraRepository.deleteById(id);
     }
 }
-

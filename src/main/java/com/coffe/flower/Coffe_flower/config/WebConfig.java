@@ -14,8 +14,10 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*")  // Cambia "*" por tu dominio en producción
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH");
+                        .allowedOrigins("http://localhost:5173") // dominio del front Vite
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
+                        .allowedHeaders("*")
+                        .allowCredentials(false);
             }
         };
     }

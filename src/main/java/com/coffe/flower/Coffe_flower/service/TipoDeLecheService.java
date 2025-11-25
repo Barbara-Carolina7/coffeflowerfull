@@ -16,25 +16,31 @@ public class TipoDeLecheService {
         this.tipoDeLecheRepository = tipoDeLecheRepository;
     }
 
+    // LISTAR
     public List<TipoDeLeche> listar() {
         return tipoDeLecheRepository.findAll();
     }
 
+    // OBTENER POR ID
     public Optional<TipoDeLeche> obtenerPorId(Long id) {
         return tipoDeLecheRepository.findById(id);
     }
 
+    // GUARDAR
     public TipoDeLeche guardar(TipoDeLeche tipo) {
         return tipoDeLecheRepository.save(tipo);
     }
 
+    // ACTUALIZAR
     public Optional<TipoDeLeche> actualizar(Long id, TipoDeLeche datos) {
-        return tipoDeLecheRepository.findById(id).map(tipo -> {
-            tipo.setNombre(datos.getNombre());
-            return tipoDeLecheRepository.save(tipo);
-        });
+        return tipoDeLecheRepository.findById(id)
+                .map(tipo -> {
+                    tipo.setNombre(datos.getNombre());
+                    return tipoDeLecheRepository.save(tipo);
+                });
     }
 
+    // ELIMINAR
     public void eliminar(Long id) {
         tipoDeLecheRepository.deleteById(id);
     }
