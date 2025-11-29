@@ -1,6 +1,8 @@
 package com.coffe.flower.Coffe_flower.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,8 +27,9 @@ public class Usuario {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @JsonIgnore
-    private String password;
+     @Column(name = "password", length = 100, nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+     private String password;
 
     private String telefono;
 
