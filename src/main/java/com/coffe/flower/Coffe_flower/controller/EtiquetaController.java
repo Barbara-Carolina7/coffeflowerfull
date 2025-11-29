@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/etiqueta")
+@RequestMapping("/api/etiqueta")
 public class EtiquetaController {
 
     @Autowired

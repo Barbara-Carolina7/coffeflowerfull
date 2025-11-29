@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/roles")
+@RequestMapping("api/roles") // <-- La ruta base es /api/roles
 @CrossOrigin(origins = "*")
 public class RolController {
 
@@ -20,27 +20,28 @@ public class RolController {
     }
 
     // Obtener todos los roles
-    @GetMapping
+    @GetMapping // Mapea a: GET /api/roles
     public ResponseEntity<List<Rol>> getAllRoles() {
         return ResponseEntity.ok(rolService.getAllRoles());
     }
 
     // Obtener un rol por ID
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // Mapea a: GET /api/roles/{id}
     public ResponseEntity<Rol> getRolById(@PathVariable Long id) {
         Rol rol = rolService.getRolById(id);
         if (rol == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(rol);
     }
 
-    // Crear rol
-    @PostMapping
+    // Crear rol (¡El que necesitas para llenar la DB!)
+    @PostMapping // Mapea a: POST /api/roles
     public ResponseEntity<Rol> createRol(@RequestBody Rol rol) {
+        // Mejor práctica: Devolver 201 Created si la entidad se crea con éxito
         return ResponseEntity.ok(rolService.createRol(rol));
     }
 
     // Actualizar rol
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") // Mapea a: PUT /api/roles/{id}
     public ResponseEntity<Rol> updateRol(@PathVariable Long id, @RequestBody Rol datos) {
         Rol actualizado = rolService.updateRol(id, datos);
         if (actualizado == null) return ResponseEntity.notFound().build();
@@ -48,7 +49,7 @@ public class RolController {
     }
 
     // Eliminar rol
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // Mapea a: DELETE /api/roles/{id}
     public ResponseEntity<Void> deleteRol(@PathVariable Long id) {
         rolService.deleteRol(id);
         return ResponseEntity.noContent().build();

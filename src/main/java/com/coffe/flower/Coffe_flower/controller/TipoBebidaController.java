@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/tipos-bebida")
+@RequestMapping("/api/tipos-bebida")
 public class TipoBebidaController {
 
     private final TipoBebidaService tipoBebidaService;

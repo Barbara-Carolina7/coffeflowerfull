@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tipos-leche")
+@RequestMapping("/api/tipos-leche")
 public class TipoDeLecheController {
 
     private final TipoDeLecheService tipoDeLecheService;
