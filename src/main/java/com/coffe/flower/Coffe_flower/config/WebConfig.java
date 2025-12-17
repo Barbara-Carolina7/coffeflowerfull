@@ -14,7 +14,10 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173") // dominio del front Vite
+                        .allowedOrigins(
+                                "http://localhost:5173", 
+                                "https://coffee-flower-front-uj74.vercel.app"
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
                         .allowedHeaders("*")
                         .allowCredentials(false);
