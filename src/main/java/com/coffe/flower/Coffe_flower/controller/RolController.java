@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/roles") // <-- La ruta base es /api/roles
-@CrossOrigin(origins = "*")
 public class RolController {
 
     private final RolService rolService;

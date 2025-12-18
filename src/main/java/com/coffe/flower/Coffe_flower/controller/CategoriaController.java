@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/categorias")
-@CrossOrigin(origins = {"http://localhost:5173", "https://coffee-flower-front-99gp.vercel.app"})
 public class CategoriaController {
 
     private final CategoriaService categoriaService;
