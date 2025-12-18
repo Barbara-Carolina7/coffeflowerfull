@@ -16,11 +16,11 @@ public class WebConfig {
                 registry.addMapping("/**")
                         .allowedOrigins(
                                 "http://localhost:5173", 
-                                "https://coffee-flower-front-uj74.vercel.app"
+                                "https://coffee-flower-front.vercel.app"
                         )
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(false);
+                        .allowCredentials(true);
             }
         };
     }

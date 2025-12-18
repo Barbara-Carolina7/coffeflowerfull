@@ -1,7 +1,7 @@
 package com.coffe.flower.Coffe_flower.controller;
 
 import com.coffe.flower.Coffe_flower.model.TipoDeLeche;
-import com.coffe.flower.Coffe_flower.service.TipoDeLecheService;
+import com.coffe.flower.Coffe_flower.service.TipoLecheService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/tipos-leche")
 public class TipoDeLecheController {
 
-    private final TipoDeLecheService tipoDeLecheService;
+    private final TipoLecheService tipoDeLecheService;
 
-    public TipoDeLecheController(TipoDeLecheService tipoDeLecheService) {
+    public TipoDeLecheController(TipoLecheService tipoDeLecheService) {
         this.tipoDeLecheService = tipoDeLecheService;
     }
 

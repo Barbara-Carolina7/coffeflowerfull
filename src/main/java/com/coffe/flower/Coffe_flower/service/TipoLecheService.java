@@ -1,18 +1,18 @@
 package com.coffe.flower.Coffe_flower.service;
 
 import com.coffe.flower.Coffe_flower.model.TipoDeLeche;
-import com.coffe.flower.Coffe_flower.repository.TipoDeLecheRepository;
+import com.coffe.flower.Coffe_flower.repository.TipoLecheRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TipoDeLecheService {
+public class TipoLecheService {
 
-    private final TipoDeLecheRepository tipoDeLecheRepository;
+    private final TipoLecheRepository tipoDeLecheRepository;
 
-    public TipoDeLecheService(TipoDeLecheRepository tipoDeLecheRepository) {
+    public TipoLecheService(TipoLecheRepository tipoDeLecheRepository) {
         this.tipoDeLecheRepository = tipoDeLecheRepository;
     }
 

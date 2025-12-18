@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/categorias")
-@CrossOrigin("*")
+@CrossOrigin(origins = {"http://localhost:5173", "https://coffee-flower-front-99gp.vercel.app"})
 public class CategoriaController {
 
     private final CategoriaService categoriaService;
@@ -17,34 +17,13 @@ public class CategoriaController {
         this.categoriaService = categoriaService;
     }
 
-    // Obtener todas las categorías
     @GetMapping
-    public List<Categoria> getCategorias() {
-        return categoriaService.findAll();
+    public List<Categoria> listar() {
+        return categoriaService.listar();
     }
 
-    // Obtener una categoría por ID
-    @GetMapping("/{id}")
-    public Categoria getCategoria(@PathVariable Long id) {
-        return categoriaService.findById(id);
-    }
-
-    // Crear categoría
     @PostMapping
-    public Categoria create(@RequestBody Categoria categoria) {
-        return categoriaService.save(categoria);
-    }
-
-    // Editar categoría
-    @PutMapping("/{id}")
-    public Categoria update(@PathVariable Long id, @RequestBody Categoria categoria) {
-        categoria.setId(id);
-        return categoriaService.save(categoria);
-    }
-
-    // Eliminar categoría
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        categoriaService.delete(id);
+    public Categoria crear(@RequestBody Categoria categoria) {
+        return categoriaService.guardar(categoria);
     }
 }

@@ -1,15 +1,25 @@
 package com.coffe.flower.Coffe_flower.service;
 
 import com.coffe.flower.Coffe_flower.model.Categoria;
+import com.coffe.flower.Coffe_flower.repository.CategoriaRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public interface CategoriaService {
+@Service
+public class CategoriaService {
 
-    List<Categoria> findAll();
+    private final CategoriaRepository categoriaRepository;
 
-    Categoria findById(Long id);
+    public CategoriaService(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
+    }
 
-    Categoria save(Categoria categoria);
+    public List<Categoria> listar() {
+        return categoriaRepository.findAll();
+    }
 
-    void delete(Long id);
+    public Categoria guardar(Categoria categoria) {
+        return categoriaRepository.save(categoria);
+    }
 }

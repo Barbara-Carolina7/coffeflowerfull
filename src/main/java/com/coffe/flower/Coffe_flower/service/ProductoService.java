@@ -2,7 +2,6 @@ package com.coffe.flower.Coffe_flower.service;
 
 import com.coffe.flower.Coffe_flower.model.Producto;
 import com.coffe.flower.Coffe_flower.repository.ProductoRepository;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,36 +16,52 @@ public class ProductoService {
         this.productoRepository = productoRepository;
     }
 
-    // Listar todos los productos
-    public List<Producto> listar() {
+    // Listar productos con filtro opcional de categoría
+    public List<Producto> listar(String categoria) {
+        if (categoria != null && !categoria.isEmpty()) {
+            return productoRepository.findByCategoriaNombreIgnoreCase(categoria);
+        }
         return productoRepository.findAll();
     }
 
-    // Obtener producto por ID
+    // Método para filtrar por categoría, tipo de leche y tamaño
+    public List<Producto> listarFiltros(String categoria, String tipoLeche, String tamano) {
+        if (categoria != null && tipoLeche != null && tamano != null) {
+            return productoRepository.findByCategoriaNombreIgnoreCaseAndTipoLecheNombreIgnoreCaseAndTamanoNombreIgnoreCase(
+                    categoria, tipoLeche, tamano
+            );
+        }
+        return productoRepository.findAll();
+    }
+
     public Optional<Producto> obtenerPorId(Long id) {
         return productoRepository.findById(id);
     }
 
-    // Guardar un producto
     public Producto guardar(Producto producto) {
         return productoRepository.save(producto);
     }
 
-    // Actualizar un producto
-    public Optional<Producto> actualizar(Long id, Producto datos) {
-        return productoRepository.findById(id).map(producto -> {
-            producto.setNombre(datos.getNombre());
-            producto.setDescripcion(datos.getDescripcion());
-            producto.setPrecioBase(datos.getPrecioBase());
-            producto.setStock(datos.getStock());
-            producto.setCategoria(datos.getCategoria());
-          
-            // Puedes agregar más campos según tu modelo
-            return productoRepository.save(producto);
+    public Optional<Producto> actualizar(Long id, Producto producto) {
+        return productoRepository.findById(id).map(p -> {
+            p.setNombre(producto.getNombre());
+            p.setDescripcion(producto.getDescripcion());
+            p.setPrecioBase(producto.getPrecioBase());
+            p.setStock(producto.getStock());
+            p.setCategoria(producto.getCategoria());
+            p.setTipoLeche(producto.getTipoLeche());
+            p.setTipoGrano(producto.getTipoGrano());
+            p.setTipoBebida(producto.getTipoBebida());
+            p.setTamano(producto.getTamano());
+            p.setTemperatura(producto.getTemperatura());
+            p.setEndulzante(producto.getEndulzante());
+            p.setHelado(producto.getHelado());
+            p.setEtiquetas(producto.getEtiquetas());
+            p.setToppings(producto.getToppings());
+            return productoRepository.save(p);
         });
     }
 
-    // Eliminar un producto
     public void eliminar(Long id) {
         productoRepository.deleteById(id);
     }
