@@ -17,13 +17,11 @@ public class ProductoController {
         this.productoService = productoService;
     }
 
-    // 🔥 ENDPOINT DE PRUEBA
     @GetMapping("/ping")
     public String ping() {
         return "API PRODUCTOS OK";
     }
 
-    // LISTAR PRODUCTOS (opcional por categoría)
     @GetMapping
     public List<Producto> listar(
             @RequestParam(required = false) String categoria
@@ -34,23 +32,5 @@ public class ProductoController {
     @GetMapping("/{id}")
     public Optional<Producto> obtener(@PathVariable Long id) {
         return productoService.obtenerPorId(id);
-    }
-
-    @PostMapping
-    public Producto crear(@RequestBody Producto producto) {
-        return productoService.guardar(producto);
-    }
-
-    @PutMapping("/{id}")
-    public Optional<Producto> actualizar(
-            @PathVariable Long id,
-            @RequestBody Producto producto
-    ) {
-        return productoService.actualizar(id, producto);
-    }
-
-    @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
-        productoService.eliminar(id);
     }
 }
