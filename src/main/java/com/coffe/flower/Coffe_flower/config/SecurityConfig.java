@@ -15,7 +15,7 @@ public class SecurityConfig {
 
         http
             .csrf(csrf -> csrf.disable())
-            .cors(cors -> cors.disable())  // Evita conflicto con WebConfig (ver nota abajo)
+            .cors(cors -> {}) // 👈 HABILITA CORS (USA WebConfig)
             .authorizeHttpRequests(auth -> auth
                 .anyRequest().permitAll()
             );
