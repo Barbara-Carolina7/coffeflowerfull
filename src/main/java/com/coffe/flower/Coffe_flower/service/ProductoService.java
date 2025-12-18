@@ -55,9 +55,9 @@ public class ProductoService {
             p.setTamano(producto.getTamano());
             p.setTemperatura(producto.getTemperatura());
             p.setEndulzante(producto.getEndulzante());
-            p.setHelado(producto.getHelado());
+        
             p.setEtiquetas(producto.getEtiquetas());
-            p.setToppings(producto.getToppings());
+            
             return productoRepository.save(p);
         });
     }

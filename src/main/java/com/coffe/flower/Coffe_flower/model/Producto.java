@@ -63,9 +63,7 @@ public class Producto {
     @JoinColumn(name = "endulzante_id")
     private Endulzante endulzante;
 
-    @ManyToOne
-    @JoinColumn(name = "helado_id")
-    private Helado helado;
+
 
     // Relaciones ManyToMany
     @ManyToMany
@@ -76,11 +74,5 @@ public class Producto {
     )
     private List<Etiqueta> etiquetas;
 
-    @ManyToMany
-    @JoinTable(
-            name = "producto_topping",
-            joinColumns = @JoinColumn(name = "producto_id"),
-            inverseJoinColumns = @JoinColumn(name = "topping_id")
-    )
-    private List<Topping> toppings;
+ 
 }
