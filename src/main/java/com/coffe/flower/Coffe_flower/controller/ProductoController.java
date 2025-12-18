@@ -17,15 +17,15 @@ public class ProductoController {
         this.productoService = productoService;
     }
 
-    @GetMapping("/ping")
-    public String ping() {
-        return "API PRODUCTOS OK";
-    }
-
     @GetMapping
     public List<Producto> listar(
-            @RequestParam(required = false) String categoria
+            @RequestParam(required = false) String categoria,
+            @RequestParam(required = false) String tipoLeche,
+            @RequestParam(required = false) String tamano
     ) {
+        if (categoria != null && tipoLeche != null && tamano != null) {
+            return productoService.listarFiltros(categoria, tipoLeche, tamano);
+        }
         return productoService.listar(categoria);
     }
 
